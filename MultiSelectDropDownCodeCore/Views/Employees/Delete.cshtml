@@ -1,0 +1,52 @@
+﻿@model MultiSelectDropDownCodeCore.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 border border-4 rounded rounded-3 p-4">
+            <h5 class="text-center text-info "> Employee detail Of @Model.EmployeeId</h5>
+            <p class="text-center text-danger">Are You Sure,You Want To Delete This Employee Recard</p>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.JoiningDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.JoiningDate)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DepartmentName)
+                </dt>
+                <dd class="col-sm-6">
+                    @foreach (var item in Model.Objempdpt)
+                    {
+                        @item.department.Name @(" ")
+                    }
+                </dd>
+            </dl>
+            <br />
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="EmployeeId" />
+                <input type="submit" value="Delete" class="btn btn-danger" /> 
+                <a class="btn btn-secondary float-end" asp-action="Index">Back to List</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+           
+        </div>

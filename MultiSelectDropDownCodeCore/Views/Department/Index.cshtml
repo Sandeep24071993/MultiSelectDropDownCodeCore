@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MultiSelectDropDownCodeCore.Models.Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 border border-4 rounded rounded-3 p-4">
+            <h3 class="text-center text-info ">Department details</h3>
+            <p>
+                <a class="btn btn-primary" asp-action="Create">Create New</a>
+            </p>
+            <table class="table table-hover text-center">
+                <thead>
+                    <tr class="bg-secondary">
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.DepartmentId">Edit</a> |
+                                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.DepartmentId">Details</a> |
+                                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.DepartmentId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

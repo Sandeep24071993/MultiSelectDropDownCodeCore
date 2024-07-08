@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MultiSelectDropDownCodeCore.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-10 offset-1 border border-4 rounded rounded-3 p-4">
+            <h3 class="text-center text-info ">Employee details</h3>
+            <p>
+                <a class="btn btn-primary" asp-action="Create">Create New</a>
+            </p>
+            <table class="table table-hover">
+                <thead>
+                    <tr class="bg-secondary">
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.JoiningDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DepartmentName)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JoiningDate)
+                            </td>
+                            <td>
+                                @foreach (var item1 in item.Objempdpt)
+                                {
+                                    @item1.department.Name @(" ")
+                                }
+                            </td>
+                            <td>
+                                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
+                                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
+                                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

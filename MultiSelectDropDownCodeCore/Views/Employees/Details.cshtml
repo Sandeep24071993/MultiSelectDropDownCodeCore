@@ -1,0 +1,48 @@
+﻿@model MultiSelectDropDownCodeCore.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 border border-4 rounded rounded-3 p-4">
+            <h5 class="text-center text-info "> Employee detail Of @Model.EmployeeId</h5>
+          
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EmployeeId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EmployeeId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.JoiningDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.JoiningDate)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DepartmentName)
+                </dt>
+                <dd class="col-sm-8">
+                    @foreach (var item in Model.Objempdpt)
+                    {
+                        @item.department.Name @(", ")
+                    }
+                </dd>
+            </dl>
+            <div>
+                <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@Model?.EmployeeId">Edit</a> 
+                <a class="btn btn-sm btn-secondary float-end" asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
